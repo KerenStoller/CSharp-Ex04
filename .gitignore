@@ -1,1 +1,5 @@
-/B25 Ex04 JonathanSheffer 302345749 KerenStoller 212127898/Ex04 Jonathan 302345749 Keren 212127898/Ex04 Jonathan 302345749 Keren 212127898.sln
+bin/
+obj/
+*.user
+*.suo
+.idea/

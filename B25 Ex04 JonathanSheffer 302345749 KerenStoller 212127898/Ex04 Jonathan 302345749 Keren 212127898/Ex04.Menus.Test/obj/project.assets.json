@@ -98,5 +98,13 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.300/PortableRuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file C:\\Users\\jshef\\OneDrive\\Desktop\\College\\c# and .NET\\C#-EX04\\B25 Ex04 JonathanSheffer 302345749 KerenStoller 212127898\\Ex04 Jonathan 302345749 Keren 212127898\\Ex04.Menus.Test\\obj\\project.nuget.cache : '<' is an invalid start of a property name. Expected a '\"'. Path: $ | LineNumber: 2 | BytePositionInLine: 0."
+    }
+  ]
 }

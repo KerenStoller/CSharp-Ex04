@@ -4,9 +4,9 @@ public abstract class MenuItem
 {
     public string Title { get; set; }
 
-    public MenuItem(string title)
+    public MenuItem(string i_Title)
     {
-        Title = title;
+        Title = i_Title;
     }
 
     public abstract void Activate();

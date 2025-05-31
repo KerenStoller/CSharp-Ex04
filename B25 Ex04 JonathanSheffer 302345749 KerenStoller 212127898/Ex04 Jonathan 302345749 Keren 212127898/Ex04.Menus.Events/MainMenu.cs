@@ -6,7 +6,7 @@ public class MainMenu
 
     public MainMenu(string i_Title)
     {
-        r_RootMenu = new SubMenu(i_Title);
+        r_RootMenu = new SubMenu(i_Title, true);
     }
 
     public void AddMenuItem(MenuItem i_MenuItem)

@@ -1,5 +1,59 @@
+# Build results
 bin/
 obj/
+[Bb]uild/
+[Ll]og/
+[Ll]ogs/
+
+# User-specific files
 *.user
 *.suo
+*.userosscache
+*.sln.docstates
+*.sdf
+*.cache
+*.dbmdl
+
+# VS Code / JetBrains Rider / Resharper
 .idea/
+.vscode/
+.ReSharper*/
+*.DotSettings.user
+
+# VS2022 specific folders and files
+.vs/
+Generated_Code/
+*.ncb
+*.aps
+*.opendb
+*.VC.db
+*.VC.VC.opendb
+
+# NuGet
+*.nupkg
+*.snupkg
+packages/
+.nuget/
+project.lock.json
+project.fragment.lock.json
+
+# Entity Framework
+*.sql
+*.cache
+migrations/
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Rider .sln.iml files
+*.sln.iml
+
+# Backup & temp files
+*~ 
+*.bak
+*.tmp
+*.temp
+
+# Publish folder
+publish/

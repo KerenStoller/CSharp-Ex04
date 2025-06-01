@@ -1,7 +1,7 @@
 ﻿using Ex04.Menus;
 using Ex04.Menus.Events;
 
-public class program
+public class Program
 {
    private static void printHello()
     {

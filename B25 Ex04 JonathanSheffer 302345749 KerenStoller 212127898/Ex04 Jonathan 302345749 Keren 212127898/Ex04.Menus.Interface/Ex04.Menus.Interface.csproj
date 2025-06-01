@@ -2,13 +2,8 @@
 
     <PropertyGroup>
         <TargetFramework>net9.0</TargetFramework>
-        <RootNamespace>Ex04_Jonathan_302345749_Keren_212127898</RootNamespace>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
     </PropertyGroup>
-
-    <ItemGroup>
-      <ProjectReference Include="..\Ex04.Menus.Test\Ex04.Menus.Test.csproj" />
-    </ItemGroup>
 
 </Project>

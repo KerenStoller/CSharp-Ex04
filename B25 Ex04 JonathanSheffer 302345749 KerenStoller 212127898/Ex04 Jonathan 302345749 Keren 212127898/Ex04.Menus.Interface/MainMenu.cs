@@ -1,4 +1,4 @@
-namespace Ex04_Jonathan_302345749_Keren_212127898;
+namespace Ex04.Menus.Interface;
 
 public class MainMenu
 {

@@ -19,9 +19,4 @@ public class MainMenu
     {
         _mRootSubMenu.AddMenuItem(iSubMenu);
     }
-    
-    public void AddActionItem(LeafItem iLeaf)
-    {
-        _mRootSubMenu.AddMenuItem(iLeaf);
-    }
 }

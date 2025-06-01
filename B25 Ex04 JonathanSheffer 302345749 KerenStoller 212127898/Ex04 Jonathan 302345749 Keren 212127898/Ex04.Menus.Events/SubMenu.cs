@@ -6,9 +6,9 @@ public class SubMenu : MenuItem
 
     public const string k_Dividor = "--------------------";
 
-    List<MenuItem> m_MenuItems = new List<MenuItem>();
+    private readonly List<MenuItem> r_MenuItems = new();
 
-    private InputValidator m_Validator = new InputValidator();
+    private readonly InputValidator r_Validator = new();
 
     public SubMenu(string i_Title, bool i_IsMainMenu = false)
         : base(i_Title)
@@ -18,8 +18,8 @@ public class SubMenu : MenuItem
 
     public void AddMenuItem(MenuItem i_MenuItem)
     {
-        m_MenuItems.Add(i_MenuItem);
-        m_Validator.NumberOfItems++;
+        r_MenuItems.Add(i_MenuItem);
+        r_Validator.NumberOfItems++;
     }
 
     public override void Activate()
@@ -38,7 +38,7 @@ public class SubMenu : MenuItem
 
             int choiceNumber = 1;
 
-            foreach(MenuItem menuItem in m_MenuItems)
+            foreach(MenuItem menuItem in r_MenuItems)
             {
                 Console.WriteLine($"{choiceNumber++}. {menuItem.Title}");
             }
@@ -46,16 +46,16 @@ public class SubMenu : MenuItem
             Console.WriteLine($"0. {backMessage}");
 
             Console.WriteLine(
-                m_MenuItems.Count == 1
+                r_MenuItems.Count == 1
                     ? $"Please enter you choice or 0 to {exitMessage}:"
-                    : $"Please enter your choice (1 - {m_MenuItems.Count} or 0 to {exitMessage}):");
+                    : $"Please enter your choice (1 - {r_MenuItems.Count} or 0 to {exitMessage}):");
 
             string? userInput = Console.ReadLine();
             int choice;
 
             try
             {
-                choice = m_Validator.IsValidInput(userInput);
+                choice = r_Validator.IsValidInput(userInput);
             }
             catch (ArgumentException ex)
             {
@@ -72,7 +72,7 @@ public class SubMenu : MenuItem
             }
             else
             {
-                MenuItem selectedItem = m_MenuItems[choice - 1];
+                MenuItem selectedItem = r_MenuItems[choice - 1];
                 selectedItem.Activate();
             }
         }

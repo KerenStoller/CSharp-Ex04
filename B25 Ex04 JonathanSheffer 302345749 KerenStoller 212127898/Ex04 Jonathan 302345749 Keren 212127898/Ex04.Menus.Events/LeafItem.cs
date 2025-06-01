@@ -2,20 +2,19 @@
 
 public class LeafItem : MenuItem
 {
-    public event Action? Selected;
+    public event Action<LeafItem>? Selected;
     public LeafItem(string i_Title) : base(i_Title)
     {
     }
 
-    protected virtual void onSelected()
+    protected virtual void OnSelected()
     {
-        Selected?.Invoke();
+        Selected?.Invoke(this);
     }
 
     public override void Activate()
     {
-        Console.Clear();
-        onSelected();
+        OnSelected();
     }
 }
 

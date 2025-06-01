@@ -3,10 +3,11 @@
 public class MainMenu
 {
     private readonly SubMenu r_RootMenu;
+    private readonly bool r_IsMainMenu = true;
 
     public MainMenu(string i_Title)
     {
-        r_RootMenu = new SubMenu(i_Title, true);
+        r_RootMenu = new SubMenu(i_Title, r_IsMainMenu);
     }
 
     public void AddMenuItem(MenuItem i_MenuItem)
@@ -16,7 +17,7 @@ public class MainMenu
 
     public void Show()
     {
-        r_RootMenu.Activate();
+        r_RootMenu.OnSelect();
     }
 }
 

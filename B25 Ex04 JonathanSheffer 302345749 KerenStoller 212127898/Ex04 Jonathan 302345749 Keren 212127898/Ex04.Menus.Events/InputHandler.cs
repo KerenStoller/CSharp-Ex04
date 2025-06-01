@@ -1,7 +1,7 @@
 ﻿namespace Ex04.Menus.Events;
 public static class InputHandler
 {
-    public static int GetValidIInput(int i_MinNumber, int i_MaxNumber)
+    public static int GetValidInput(int i_MinNumber, int i_MaxNumber)
     {
         string? userInput = Console.ReadLine();
         int chosenInput;

@@ -3,80 +3,54 @@
 public class SubMenu : MenuItem
 {
     private bool m_IsMainMenu;
-
     public const string k_Dividor = "--------------------";
+    private readonly List<MenuItem> r_Items = new List<MenuItem>();
+    private const int k_quit = 0;
+    private const int k_InitUserChoice = -1;
 
-    List<MenuItem> m_MenuItems = new List<MenuItem>();
-
-    private InputValidator m_Validator = new InputValidator();
-
-    public SubMenu(string i_Title, bool i_IsMainMenu = false)
-        : base(i_Title)
+    public SubMenu(string i_Title, bool i_IsMainMenu = false) : base(i_Title)
     {
-        this.m_IsMainMenu = i_IsMainMenu;
+        m_IsMainMenu = i_IsMainMenu;
     }
 
     public void AddMenuItem(MenuItem i_MenuItem)
     {
-        m_MenuItems.Add(i_MenuItem);
-        m_Validator.NumberOfItems++;
+        r_Items.Add(i_MenuItem);
     }
 
-    public override void Activate()
+    public override void OnSelect()
     {
-        Console.Clear();
-        bool exit = false;
-
-        string exitMessage = m_IsMainMenu ? "exit" : "go back";
-
-        string backMessage = m_IsMainMenu ? "Exit" : "Back";
-
-        while (!exit)
+        int userChoice = k_InitUserChoice;
+        
+        while (userChoice != k_quit)
         {
-            Console.WriteLine($"** {this.Title} **");
+            Console.Clear();
+            Console.WriteLine($"--- {Title} ---");
             Console.WriteLine(k_Dividor);
-
-            int choiceNumber = 1;
-
-            foreach(MenuItem menuItem in m_MenuItems)
+            int index = 1;
+            
+            foreach (MenuItem menuItem in r_Items)
             {
-                Console.WriteLine($"{choiceNumber++}. {menuItem.Title}");
+                Console.WriteLine($"{index++}. {menuItem.Title}");
             }
 
-            Console.WriteLine($"0. {backMessage}");
-
-            Console.WriteLine(
-                m_MenuItems.Count == 1
-                    ? $"Please enter you choice or 0 to {exitMessage}:"
-                    : $"Please enter your choice (1 - {m_MenuItems.Count} or 0 to {exitMessage}):");
-
-            string? userInput = Console.ReadLine();
-            int choice;
-
-            try
+            if (m_IsMainMenu)
             {
-                choice = m_Validator.IsValidInput(userInput);
-            }
-            catch (ArgumentException ex)
-            {
-                Console.WriteLine(ex.Message);
-                Console.WriteLine("Press any key to return to the menu");
-                Console.ReadLine();
-                continue;
-            }
-
-            if (choice == 0)
-            {
-                Console.Clear();
-                exit = true;
+                Console.WriteLine("0. Exit");
             }
             else
             {
-                MenuItem selectedItem = m_MenuItems[choice - 1];
-                selectedItem.Activate();
+                Console.WriteLine("0. Back");
+            }
+            
+            Console.Write("Choose an option: ");
+            userChoice = InputHandler.GetValidInput(0, r_Items.Count);
+            
+            if (userChoice > 0)
+            {
+                r_Items[userChoice-1].OnSelect();
             }
         }
+        Console.Clear();
     }
-
 }
-

@@ -2,19 +2,14 @@
 
 public class LeafItem : MenuItem
 {
-    public event Action<LeafItem>? Selected;
-    public LeafItem(string i_Title) : base(i_Title)
-    {
-    }
+    public event Action Selected;
+    
+    public LeafItem(string i_Title) : base(i_Title) {}
 
-    protected virtual void OnSelected()
+    public override void OnSelect()
     {
-        Selected?.Invoke(this);
-    }
-
-    public override void Activate()
-    {
-        OnSelected();
+        Selected?.Invoke();
+        Console.WriteLine("Press Enter to continue...");
+        Console.ReadLine();
     }
 }
-

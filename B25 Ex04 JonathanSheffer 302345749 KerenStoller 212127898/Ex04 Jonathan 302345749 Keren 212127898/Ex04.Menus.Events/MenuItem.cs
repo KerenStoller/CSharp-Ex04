@@ -9,6 +9,5 @@ public abstract class MenuItem
         Title = i_Title;
     }
 
-    public abstract void Activate();
+    public abstract void OnSelect();
 }
-

@@ -1,25 +1,29 @@
 namespace Ex04.Menus.Interface;
 
-public class MenuItem : IMenuItem
+public class SubMenu : IMenuItem
 {
     public string Title { get; }
     private readonly List<IMenuItem> r_Items =  new List<IMenuItem>();
-    bool i_IsMainMenu;
+    private bool m_IsMainMenu;
+    private const int k_quit = 0;
+    private const int k_InitUserChoice = -1;
+    public const string k_Dividor = "--------------------";
     
-    public MenuItem(string i_Title, bool i_IsMainMenu = false)
+    public SubMenu(string i_Title, bool i_IsMainMenu = false)
     {   
         Title = i_Title;
-        i_IsMainMenu = i_IsMainMenu;
+        m_IsMainMenu = i_IsMainMenu;
     }
     
     private void PrintMenu()
     {
-        int quit = -1;
+        int userChoice = k_InitUserChoice;
         
-        while (quit != 0)
+        while (userChoice != k_quit)
         {
             Console.Clear();
             Console.WriteLine($"--- {Title} ---");
+            Console.WriteLine(k_Dividor);
             int index = 1;
             
             foreach (IMenuItem menuItem in r_Items)
@@ -27,7 +31,7 @@ public class MenuItem : IMenuItem
                 Console.WriteLine($"{index++}. {menuItem.Title}");
             }
 
-            if (i_IsMainMenu)
+            if (m_IsMainMenu)
             {
                 Console.WriteLine("0. Exit");
             }
@@ -37,10 +41,11 @@ public class MenuItem : IMenuItem
             }
             
             Console.Write("Choose an option: ");
-            InputValidator.GetValidChoice(r_Items.Count, out quit);
-            if (quit > 0)
+            userChoice = InputHandler.GetValidInput(0, r_Items.Count);
+            
+            if (userChoice > 0)
             {
-                r_Items[quit-1].OnSelect();
+                r_Items[userChoice-1].OnSelect();
             }
         }
         Console.Clear();

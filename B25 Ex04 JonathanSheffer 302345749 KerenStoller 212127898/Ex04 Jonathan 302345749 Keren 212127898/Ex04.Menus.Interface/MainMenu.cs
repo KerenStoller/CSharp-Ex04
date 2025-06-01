@@ -1,27 +1,27 @@
 namespace Ex04.Menus.Interface;
 
-public class SubMenu
+public class MainMenu
 {
-    private MenuItem m_RootMenuItem;
+    private SubMenu _mRootSubMenu;
     private readonly bool r_IsMainMenu = true;
 
-    public SubMenu(string i_Title)
+    public MainMenu(string i_Title)
     {
-        m_RootMenuItem = new MenuItem(i_Title, r_IsMainMenu);
+        _mRootSubMenu = new SubMenu(i_Title, r_IsMainMenu);
     }
 
     public void Show()
     {
-        (m_RootMenuItem as IMenuItem).OnSelect();
+        (_mRootSubMenu as IMenuItem).OnSelect();
     }
 
-    public void AddMenuItem(MenuItem iMenuItemItem)
+    public void AddMenuItem(SubMenu iSubMenu)
     {
-        m_RootMenuItem.AddMenuItem(iMenuItemItem);
+        _mRootSubMenu.AddMenuItem(iSubMenu);
     }
     
-    public void AddActionItem(ActionItem i_Action)
+    public void AddActionItem(LeafItem iLeaf)
     {
-        m_RootMenuItem.AddMenuItem(i_Action);
+        _mRootSubMenu.AddMenuItem(iLeaf);
     }
 }
